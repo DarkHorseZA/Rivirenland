@@ -72,18 +72,15 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   /* ===== Design tokens (brand blue extracted from logo / original CSS) ===== */
   :root{
     --blue:#005197;          /* primary brand blue */
-    --blue-600:#0a4a82;
     --blue-300:#2193d1;      /* secondary accent */
     --amber:#ffae00;         /* original CTA accent */
     --amber-600:#e89c00;
     --ink:#1f2a36;
     --body:#42505e;
     --offwhite:#f6f5f1;      /* warm off-white */
-    --sand:#efe9df;          /* warm neutral */
     --line:#e4e9ee;
     --white:#fff;
     --radius:18px;
-    --radius-sm:12px;
     --shadow:0 18px 50px -28px rgba(0,49,82,.45);
     --maxw:1180px;
     --font-body:'Plus Jakarta Sans',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
@@ -110,10 +107,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   h4{font-size:1.1rem}
   p{margin-bottom:1rem}
   .wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
-  .eyebrow{
-    font-family:var(--font-body);font-weight:700;letter-spacing:.16em;
-    text-transform:uppercase;font-size:.74rem;color:var(--blue-300);margin-bottom:.6rem
-  }
   .btn{
     display:inline-flex;align-items:center;gap:.55rem;font-family:var(--font-body);
     font-weight:700;font-size:.95rem;letter-spacing:.02em;border-radius:999px;
@@ -122,10 +115,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   }
   .btn-primary{background:var(--amber);color:#3a2a00;border-color:var(--amber)}
   .btn-primary:hover{background:var(--amber-600);border-color:var(--amber-600);color:#3a2a00}
-  .btn-ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.6)}
-  .btn-ghost:hover{background:rgba(255,255,255,.12);color:var(--white)}
-  .btn-blue{background:var(--blue);color:var(--white);border-color:var(--blue)}
-  .btn-blue:hover{background:var(--blue-600);border-color:var(--blue-600);color:var(--white)}
   .section{padding:78px 0}
   .section-sand{background:var(--offwhite)}
   .divider{height:1px;background:var(--line);max-width:var(--maxw);margin:0 auto}
@@ -177,9 +166,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
       url('https://www.chiro.inceptionimages.com/wp-content/uploads/2018/12/presenting-woman-background.jpg') center/cover no-repeat;
   }
   .hero-inner{max-width:680px;padding:96px 0 104px}
-  .hero .eyebrow{color:#bfe0f5}
   .hero .script{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:1.5rem;color:#cfe7f7;display:block;margin-bottom:.2rem}
-  .hero h1{color:#fff;text-transform:uppercase;letter-spacing:.01em;margin-bottom:1.1rem}
+  .hero-title{
+    font-family:var(--font-display);font-weight:600;color:#fff;line-height:1.18;
+    font-size:clamp(2rem,5vw,3.1rem);text-transform:uppercase;letter-spacing:.01em;margin-bottom:1.1rem
+  }
   .hero p{font-size:1.12rem;color:#e8f1f8;max-width:560px;margin-bottom:1.8rem}
   .hero-actions{display:flex;flex-wrap:wrap;gap:14px}
 
@@ -193,12 +184,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .qcard:hover{transform:translateY(-4px)}
   .qcard img{width:118px;height:118px;border-radius:50%;object-fit:cover;margin:0 auto 14px}
   .qcard h3{margin-bottom:.25rem;text-transform:uppercase;font-size:1.05rem}
-  .qcard .role{font-size:.95rem;color:var(--body);margin-bottom:1rem}
-  .qcard a.more{font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+  .qcard .role{font-size:.95rem;color:var(--body)}
 
   /* ===== Intro / welcome ===== */
   .intro-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:54px;align-items:start}
   .prose p{margin-bottom:1.05rem}
+  .prose h1{margin:0 0 1rem;text-transform:uppercase}
   .prose h2{margin:2.2rem 0 .9rem}
   .prose h3{margin:2.2rem 0 .8rem;text-transform:uppercase}
   .prose .lead{font-size:1.18rem;color:var(--ink);font-weight:500}
@@ -212,7 +203,6 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .info-card .addr{color:#dbe9f4;line-height:1.6}
 
   /* ===== Hours ===== */
-  .hours-head{text-align:center;max-width:640px;margin:0 auto 46px}
   .hours-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
   .hours-card{
     background:#fff;border:1px solid var(--line);border-radius:var(--radius);
@@ -280,6 +270,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   .site-footer h4{color:#fff;text-transform:uppercase;font-size:.85rem;letter-spacing:.1em;margin-bottom:1rem;font-family:var(--font-body);font-weight:700}
   .site-footer ul{list-style:none}
   .site-footer ul li{margin-bottom:.55rem}
+  .foot-addr p{margin-bottom:.9rem;line-height:1.6}
+  .foot-addr a{color:#fff;font-weight:700}
   .site-footer a{color:#aebccb}
   .site-footer a:hover{color:#fff}
   .footer-bottom{
@@ -424,11 +416,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="wrap">
       <div class="hero-inner">
         <span class="script">een nieuwe</span>
-        <h1>benadering van gezondheidszorg</h1>
+        <p class="hero-title">benadering van gezondheidszorg</p>
         <p>Chiropractie Rivierenland behandelt de oorzaak van uw pijn, niet alleen het symptoom. Wij stellen een diagnose vast en vertellen u uitvoerig of er een oplossing is voor uw probleem.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="/speciaal/">nieuwe cliënten special</a>
-          <a class="btn btn-ghost" href="/neem-contact-met-ons-op">Neem contact op</a>
         </div>
       </div>
     </div>
@@ -442,19 +433,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <a href="/ons"><img src="https://www.chiropractierivierenland.nl/wp-content/uploads/bb-plugin/cache/Chiropractor-Geldermalsen-GW-Matthew-Barney-circle.jpg" alt="Chiropractor Geldermalsen GW Matthew Barney" /></a>
           <h3><a href="/ons">ONTMOET HET TEAM</a></h3>
           <div class="role">Matthew Barney D.C.</div>
-          <a class="more" href="/ons">Bekijk het team &rarr;</a>
         </div>
         <div class="qcard">
           <a href="/getuigenissen"><img src="https://www.chiropractierivierenland.nl/wp-content/uploads/bb-plugin/cache/two-women-thumbs-up-testimonials-circle.jpg" alt="" /></a>
           <h3><a href="/getuigenissen">BEOORDELINGEN</a></h3>
           <div class="role">Lees Onze Recensies</div>
-          <a class="more" href="/getuigenissen">Lees recensies &rarr;</a>
         </div>
         <div class="qcard">
           <a href="/speciaal"><img src="https://www.chiropractierivierenland.nl/wp-content/uploads/bb-plugin/cache/request-an-appointment-circle-not-english-circle-07df7ca30832793663083c0cb02b5ba7-5cace3ae28c6e.png" alt="request-an-appointment-circle-not-english" /></a>
-          <h3><a href="/speciaal">AFSPRAAK MAKEN</a></h3>
-          <div class="role">Nieuwe cliënten special</div>
-          <a class="more" href="/speciaal">Plan uw bezoek &rarr;</a>
+          <h3><a href="/speciaal/">nieuwe cliënten special</a></h3>
         </div>
       </div>
     </div>
@@ -464,11 +451,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section">
     <div class="wrap intro-grid">
       <div class="prose">
+        <h1>Chiropractor Geldermalsen</h1>
         <p class="lead">Welkom bij <a href="/">Chiropractie Rivierenland in Geldermalsen</a>.</p>
         <p>Chiropractie is een van de mooiste medische beroepen omdat het fysieke problemen behandelt en oplost zonder toediening van medicatie en zonder operatie.</p>
         <p>Wilt u weten wat chiropractie voor uw gezondheid en die van uw familie kan betekenen? Neem dan contact met ons op.</p>
-
-        <h1>Chiropractor Geldermalsen</h1>
 
         <h2>CHIROPRACTOR Barney IN Geldermalsen HEET U WELKOM BIJ Chiropractie Rivierenland</h2>
         <p>Het doel van chiropractische zorg is het opnieuw uitlijnen van het lichaam door manipulatie van weefsels, gewrichten en zachte aanrakingen van het ruggenmerg, van botten kraken is geen sprake. Middels deze technieken zijn vele fysieke ongemakken te verlichten - waaronder vastzittende spieren, nekpijn, hoofdpijn, rugpijn en pijn aan ledematen. Chiropractie is de minst belastende methode om pijn te verlichten en problemen op te lossen.</p>
@@ -512,10 +498,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- SECTION: Hours (two locations) -->
   <section class="section section-sand">
     <div class="wrap">
-      <div class="hours-head">
-        <div class="eyebrow">Openingstijden</div>
-        <h2>Wij werken op afspraak</h2>
-      </div>
       <div class="hours-grid">
 
         <div class="hours-card">
@@ -552,7 +534,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <section class="section">
     <div class="wrap">
       <div class="treat-head">
-        <div class="eyebrow">Behandelingen</div>
         <h2>SYMPTOMEN WAARBIJ&nbsp;&nbsp;CHIROPRACTIE KAN HELPEN</h2>
       </div>
       <div class="treat-grid">
@@ -652,18 +633,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="footer-top">
       <div>
         <img class="trust" src="https://www.chiropractierivierenland.nl/wp-content/uploads/2017/05/Vertrouw-op-Chiropractie-Geldermalsen-GW.png" alt="Vertrouw op Chiropractie Geldermalsen GW" width="400" height="173" />
-        <p style="margin-top:18px">Chiropractie Rivierenland &mdash; chiropractische zorg in Geldermalsen en Culemborg.</p>
+      </div>
+      <div class="foot-addr">
+        <p><strong>Chiropractie Rivierenland</strong><br />Het Hooghuis 8<br />4191 AE Geldermalsen<br />Netherlands</p>
+        <p><a href="tel:0345623660">(0345) 623 660</a></p>
+        <p><strong>Chiropractie Rivierenland</strong><br />Varkensmarkt 17<br />4101 CK Culemborg<br />Netherlands</p>
+        <p><a href="tel:0345623660">(0345) 623 660</a></p>
       </div>
       <div>
-        <h4>Locaties</h4>
-        <ul>
-          <li><strong>Geldermalsen</strong><br />Het Hooghuis 8<br />4191 AE Geldermalsen</li>
-          <li style="margin-top:.8rem"><strong>Culemborg</strong><br />Varkensmarkt 17<br />4101 CK Culemborg</li>
-          <li style="margin-top:.8rem"><a href="tel:0345623660">(0345) 623 660</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Informatie</h4>
         <ul>
           <li><a href="https://www.chiropractierivierenland.nl/toegankelijkheid/">Toegankelijkheid</a></li>
           <li><a href="/anti-discriminatie/">Anti-Discriminatie</a></li>
@@ -704,9 +681,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     });
     // On mobile, tapping a parent label opens its submenu instead of navigating nowhere
     list.querySelectorAll('.has-sub > span[role="button"]').forEach(function (el) {
-      el.addEventListener('click', function () {
+      function toggleSub() {
         var sub = el.nextElementSibling;
         if (sub) sub.style.display = (sub.style.display === 'block') ? '' : 'block';
+      }
+      el.addEventListener('click', toggleSub);
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleSub(); }
       });
     });
   })();
